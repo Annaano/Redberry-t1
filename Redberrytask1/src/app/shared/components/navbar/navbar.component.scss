@@ -1,0 +1,21 @@
+.navbar{
+    height: 84px;
+    background-color: #7025FB;
+    width: 923px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .logo{
+        background: url('../../../../assets/images/header-icon.png');
+        width: 14.67px;
+        height: 18.33px;
+        margin-left: 60px;
+    }
+    p{
+        font-size: 25px;
+        font-weight: 700;
+        color: white;
+        margin-left: 8px;
+        font-family: 'Open Sans', sans-serif;
+    }
+}

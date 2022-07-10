@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;800&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landing{
+  display: flex;
+  .landing-left{
+    height: 100vh;
+    width: 923px;
+    .image{
+      height: calc(100vh - 84px);
+      width: 100%;
+      background: url("../../../assets/images/landingPage.png");
+    }
+  }
+  .landing-right{
+    height: 100vh;
+    width: 997px;
+    background-color: #FD5334;
+
+    .landing-title{
+      margin-top: 265px;
+      margin-left: 85px;
+      font-family: 'Nunito', sans-serif;
+      p{
+        display: flex;
+        align-items: center;
+        font-size: 80px;
+        font-weight: 800;
+        color: white;
+        line-height: 109.12px;
+        span{
+          color: #212529;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 27.28px;
+          margin-left: 26px;
+          letter-spacing: 0px;
+        }
+      }
+      p:first-child{
+        margin-bottom: 15px;
+      }
+    }
+
+    button{
+      background-color: #212529;
+      font-style: normal;
+      height: 53px;
+      width: 191px;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+      color: white;
+      font-weight: 300;
+      line-height: 27.24px;
+      margin-left: 85px;
+      margin-top: 102px;
+      .button-logo{
+        background: url(../../../assets/images/right-arrow.png);
+        height: 24px;
+        width: 24px;
+        margin-left: 12px
+      };
+    }
+  }
+}
+

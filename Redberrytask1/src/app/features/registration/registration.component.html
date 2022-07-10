@@ -1,0 +1,161 @@
+<ng-container [ngSwitch]="pages">
+    <ng-container *ngSwitchCase="'page1'">
+        <div class="registration">
+            <div class="registration-left">
+                <app-navbar></app-navbar>
+                <div class="image1">
+                    <p>"when you see a good move, <br>
+                        look for a better one"
+                    </p>
+                    <p>-emanuel lasker</p>
+                </div> 
+            </div> 
+            <div class="registration-right">
+                <div class="header">
+                    <p>start creating your account</p>
+                </div>
+                <div class="stepper-header">
+                    <section>
+                        <div>1</div>
+                        <div></div>
+                        <div>2</div>
+                    </section>
+                    <section>
+                        <p>Personal information</p>
+                        <p>Chess experience</p>
+                    </section>
+                    <section>
+                        <p>Personal information</p>
+                        <p>This Is Basic Information Fields</p>
+                    </section>
+                    <section>
+                        <form [formGroup]="formStepper1" (ngSubmit)="onSubmit()">
+                            <div>
+                                <input 
+                                required
+                                id="name" 
+                                type="text" 
+                                placeholder="Name *" 
+                                name="name" 
+                                formControlName="name">
+                                <app-modal *ngIf="!formStepper1.controls['name'].valid && formStepper1.controls['name'].touched" [errorMessage]="'The minimum number of characters is 2.'" [errorType]="'name'"></app-modal>
+                            </div>
+                            <div>
+                                <input 
+                                id="email" 
+                                type="email" 
+                                placeholder="Email adress *" 
+                                name="email" 
+                                formControlName="email">
+                                <app-modal *ngIf="!formStepper1.controls['email'].valid && formStepper1.controls['email'].touched" [errorMessage]="'Format of email (example@redberry.ge).'" [errorType]="'email'"></app-modal>
+                            </div>
+                            <div>
+                                <input 
+                                id="phone" 
+                                type="number" 
+                                placeholder="Phone number *" 
+                                name="phone" 
+                                formControlName="phone">
+                                <app-modal *ngIf="!formStepper1.controls['phone'].valid && formStepper1.controls['phone'].touched" [errorMessage]="'Please enter only digits, Number of digits is 9.'" [errorType]="'number'"></app-modal>
+                            </div>
+                            <div>
+                                <input 
+                                id="date" 
+                                type="text" 
+                                placeholder="Date of birth *" 
+                                onfocus="(this.type='date')" 
+                                name="date_of_birth" 
+                                formControlName="date_of_birth">
+                                <app-modal *ngIf="!formStepper1.controls['date_of_birth'].valid && formStepper1.controls['date_of_birth'].touched" [errorMessage]="'Date is required.'" [errorType]="'date'"></app-modal>
+                            </div>
+                            <div class="buttons">
+                                <button class="back" type="button" [routerLink]="['/landing']">Back</button>
+                                <button class="next" type="submit" [disabled]="!formStepper1.valid">Next <div class="next-icon"></div></button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'page2'">
+        <div class="registration">
+            <div class="registration-left">
+                <app-navbar></app-navbar>
+                <div class="image2">
+                    <p>"many have become chess masters; <br>
+                        no one has become the master of chess"
+                    </p>
+                    <p>-siegbert tarrasch</p>
+                </div> 
+            </div> 
+            <div class="registration-right">
+                <div class="header">
+                    <p>start creating your account</p>
+                </div>
+                <div class="stepper-header">
+                    <section>
+                        <div style="background-color: #E9FAF1;">1</div>
+                        <div></div>
+                        <div style="background: white; color: #212529;">2</div>
+                    </section>
+                    <section>
+                        <p>Personal information</p>
+                        <p>Chess experience</p>
+                    </section>
+                    <section>
+                        <p>Chess experience</p>
+                        <p>This Is Basic Information Fields</p>
+                    </section>
+                    <section>
+                        <form [formGroup]="formStepper2" (ngSubmit)="onSubmit2()">
+                            <div class="selects">
+                                <select name="experience_level" id="experience_level" formControlName="experience_level">
+                                    <option value="placeholder" default selected hidden>level of knowledge *</option>
+                                    <option value="begginer">Begginer</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                                <app-modal *ngIf="!formStepper2.controls['experience_level'].valid && formStepper2.controls['experience_level'].touched" [errorMessage]="'level Of Knowledge is required.'" [errorType]="'level Of Knowledge'"></app-modal>
+                                <select name="chooseCharacter" id="chooseCharacter" formControlName="chooseCharacter">
+                                    <option value="placeholder" default selected hidden>Choose your character *</option>
+                                    <option *ngFor="let grandmaster of grandmastersArr" value="{{ grandmaster.id }}">{{ grandmaster.name }}</option>
+                                </select>
+                                <app-modal *ngIf="!formStepper2.controls['chooseCharacter'].valid && formStepper2.controls['chooseCharacter'].touched" [errorMessage]="'Choose character is required.'" [errorType]="'Choose character'"></app-modal>
+
+                            </div>
+                            <div class="radio-buttons">
+                                <p>Have you participated in the Redberry Championship? *</p>
+                                <div style="display: flex; margin-top: 20px;">
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <input type="radio" value="true" formControlName="already_participated">
+                                        <label for="true">Yes</label>
+                                    </div>
+                                    <div style="display: flex; justify-content: center; align-items: center;">
+                                        <input type="radio" value="false" formControlName="already_participated">
+                                        <label for="false">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button type="button" class="back" (click)="backButton()">Back</button>
+                                <button type="submit" class="next" [disabled]="!formStepper2.valid">Done <div class="next-icon"></div></button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="'page3'">
+        <div class="registration">
+            <div class="registration-left">
+                <app-navbar></app-navbar>
+                <div class="image3"></div> 
+            </div> 
+            <div class="registration-right">
+                <img class="img-page4" src="../../../assets/images/Onboarding completed!.png" alt="">
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
